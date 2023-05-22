@@ -12,7 +12,7 @@ function App() {
   const [repo, setRepo] = useState(Object);
 
   const octokit = new Octokit({
-    auth: "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",
+    auth: process.env.REACT_APP_GITHUB_TOKEN,
   });
 
   const repos = async (name) => {
