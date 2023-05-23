@@ -5,7 +5,7 @@ import { BeatLoader } from "react-spinners";
 
 function App() {
   const [query, setQuery] = useState("");
-  const [temp, setTemp] = useState("")
+  const [temp, setTemp] = useState("");
   const [loading, setLoading] = useState(Boolean);
   const [landing, setLanding] = useState(true);
   const [results, setResults] = useState([]);
@@ -50,7 +50,7 @@ function App() {
       })
       .then((res) => {
         console.log(res);
-        setTemp(query)
+        setTemp(query);
         setLoading(false);
         setResults(res.data.items);
         res.data.items.map((item) => repos(item.login));
@@ -62,6 +62,19 @@ function App() {
 
   const handleInput = (e) => {
     setQuery(e.target.value);
+  };
+
+  const toggleActive = (e) => {
+    const children = document.querySelectorAll(".items-container div.user");
+    e.target.parentElement.parentElement.className === "user active"
+      ? (e.target.parentElement.parentElement.className = "user")
+      : children.forEach((item) => {
+          item.id === e.target.parentElement.parentElement.id
+            ? (item.className = "user active")
+            : (item.className = "user");
+        });
+    console.log(e.target.parentElement.parentElement.id);
+    console.log(children);
   };
 
   return (
@@ -92,29 +105,41 @@ function App() {
           </div>
         ) : (
           <div className="items-container">
-            <p style={{ color: "gray" }}>Showing results for "{temp}"</p>
+            <p>Showing results for "{temp}"</p>
             {results.map((item, index) => {
               return (
-                <div className="user" key={index}>
-                  <button>{item.login}</button>
+                <div className="user" key={index} id={"user-" + index}>
+                  <button
+                    className="toggle-btn"
+                    id={"btn-" + index}
+                    onClick={(e) => toggleActive(e)}
+                  >
+                    <span>{item.login}</span>
+                    <img
+                      src="https://www.svgrepo.com/show/511472/arrow-up-337.svg"
+                      alt=""
+                    />
+                  </button>
                   {repo[item.login] === undefined ? (
                     <div className="loading">
                       <BeatLoader color="#36d7b7" />
                     </div>
                   ) : (
-                    repo[item.login].map((item, index) => {
-                      return (
-                        <div key={index} className="detail">
-                          <h3>{item.name}</h3>
-                          <p>
-                            {item.description === null
-                              ? "<No Description>"
-                              : item.description}
-                          </p>
-                          <div>{item.stargazers_count}🌟</div>
-                        </div>
-                      );
-                    })
+                    <div className="repo-container">
+                      {repo[item.login].map((item, index) => {
+                        return (
+                          <div key={index} className="detail">
+                            <h3>{item.name}</h3>
+                            <div>{item.stargazers_count}🌟</div>
+                            <p>
+                              {item.description === null
+                                ? "<No Description>"
+                                : item.description}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
                   )}
                 </div>
               );

@@ -40,3 +40,96 @@
   opacity: 0.5;
   transition: opacity 0.5s;
 }
+
+/****************** USER CARD ******************/
+.App .items-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.App .items-container p {
+  color: gray;
+}
+
+.App .items-container .user {
+  width: 100%;
+  overflow: hidden;
+  max-height: 47px;
+  transition: max-height 0.5s;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+.App .items-container .user.active {
+  max-height: 9999vh;
+  transition: max-height 0.5s;
+}
+
+.App .items-container .user .repo-container {
+  /* display: none; */
+  max-height: 0px;
+  transition: max-height 0.5s;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.App .items-container .user.active .repo-container {
+  /* display: block; */
+  max-height: 200vh;
+  transition: max-height 0.5s;
+  scroll-behavior: smooth;
+}
+
+.App .items-container .user .repo-container .detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.App .items-container .user .repo-container .detail h3 {
+  margin: 0;
+  width: 80%;
+  text-align: left;
+}
+
+.App .items-container .user .repo-container .detail p {
+  text-align: left;
+}
+
+.App .items-container .user button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App .items-container .user button span {
+  width: 90%;
+}
+
+.App .items-container .user button img {
+  width: 10%;
+  height: 15px;
+  opacity: 0.5;
+  /* transform: rotate(0deg); */
+  /* transform: scale(-1, -1); */
+  transform: scaleY(1);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.App .items-container .user.active button img {
+  opacity: 1;
+  /* transform: rotate(180deg); */
+  /* transform: scale(1, 1); */
+  transform: scaleY(-1);
+  transition: opacity 0.5s, transform 0.5s;
+}
