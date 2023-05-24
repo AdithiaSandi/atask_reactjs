@@ -1,7 +1,7 @@
 {
+  "homepage": "https://AdithiaSandi.github.io/atask_reactjs/",
   "name": "atask_reactjs",
   "version": "0.1.0",
-  "homepage": "https://adithiasandi.github.io/atask_reactjs/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
