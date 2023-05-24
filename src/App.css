@@ -141,6 +141,15 @@
   transition: opacity 0.5s, transform 0.5s;
 }
 
+.App .items-container .user.active button {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(225, 235, 254, 0.8) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
 .App .items-container .user.active button img {
   opacity: 1;
   /* transform: rotate(180deg); */
@@ -185,6 +194,8 @@
 
   .App .items-container {
     padding: 0 5%;
+    max-width: 100%;
+    position: relative;
   }
 
   .App .items-container .user .toggle-btn {
@@ -210,9 +221,18 @@
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 100vw;
+    min-width: auto;
     left: 0;
-    top: 1rem;
-    margin: 5%;
+    top: 2.9rem;
+    margin: 0 5%;
+    padding: 1% 3%;
+    /* background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 93%,
+      rgba(225, 235, 254, 0.8) 100%
+    );
+    border-radius: 50px; */
   }
 
   .App

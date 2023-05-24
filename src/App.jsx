@@ -127,19 +127,23 @@ function App() {
                       </div>
                     ) : (
                       <div className="repo-container">
-                        {repo[item.login].map((item, index) => {
-                          return (
-                            <div key={index} className="detail">
-                              <h3>{item.name}</h3>
-                              <div>{item.stargazers_count}🌟</div>
-                              <p>
-                                {item.description === null
-                                  ? "<No Description>"
-                                  : item.description}
-                              </p>
-                            </div>
-                          );
-                        })}
+                        {repo[item.login].length === 0 ? (
+                          <h1>&lt;NO REPOSITORY&gt;</h1>
+                        ) : (
+                          repo[item.login].map((item, index) => {
+                            return (
+                              <div key={index} className="detail">
+                                <h3>{item.name}</h3>
+                                <div>{item.stargazers_count}🌟</div>
+                                <p>
+                                  {item.description === null
+                                    ? "<No Description>"
+                                    : item.description}
+                                </p>
+                              </div>
+                            );
+                          })
+                        )}
                       </div>
                     )}
                   </div>
