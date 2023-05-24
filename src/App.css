@@ -103,6 +103,7 @@
   margin: 0;
   width: 80%;
   text-align: left;
+  word-wrap: break-word;
 }
 
 .App .items-container .user .repo-container .detail p {
@@ -221,6 +222,7 @@
     .repo-container
     .detail {
     background-color: rgba(45, 156, 219, 0.2);
+    min-width: 173px;
     max-width: 25%;
     padding: 1rem;
     border-radius: 10px;
