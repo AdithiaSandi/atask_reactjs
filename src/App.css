@@ -17,6 +17,7 @@
   border-radius: 3px;
   outline-color: transparent;
   transition: outline-color 0.5s;
+  font-family: "Roboto", sans-serif;
 }
 
 .App .search-container form input:focus {
@@ -34,6 +35,7 @@
   border-radius: 3px;
   opacity: 1;
   transition: opacity 0.5s;
+  font-family: "Roboto", sans-serif;
 }
 
 .App .search-container form button:disabled {
@@ -50,21 +52,22 @@
   gap: 1rem;
 }
 
-.App .items-container p {
+.App .results-container p {
   color: gray;
 }
 
 .App .items-container .user {
   width: 100%;
-  overflow: hidden;
   max-height: 47px;
   transition: max-height 0.5s;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   row-gap: 1rem;
 }
 
 .App .items-container .user.active {
+  overflow: hidden;
   max-height: 9999vh;
   transition: max-height 0.5s;
 }
@@ -72,14 +75,18 @@
 .App .items-container .user .repo-container {
   /* display: none; */
   max-height: 0px;
+  opacity: 0;
   transition: max-height 0.5s;
   display: flex;
+  overflow: hidden;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
 .App .items-container .user.active .repo-container {
   /* display: block; */
+  overflow: hidden;
+  opacity: 1;
   max-height: 200vh;
   transition: max-height 0.5s;
   scroll-behavior: smooth;
@@ -100,6 +107,7 @@
 
 .App .items-container .user .repo-container .detail p {
   text-align: left;
+  min-width: 50%;
 }
 
 .App .items-container .user button {
@@ -112,8 +120,14 @@
   align-items: center;
 }
 
+.App .items-container .user button:hover {
+  background-color: #eaf1ff;
+}
+
 .App .items-container .user button span {
   width: 90%;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
 }
 
 .App .items-container .user button img {
@@ -132,4 +146,97 @@
   /* transform: scale(1, 1); */
   transform: scaleY(-1);
   transition: opacity 0.5s, transform 0.5s;
+}
+
+/*********************** TABLET ***********************/
+
+@media screen and (width > 425px) {
+  .App {
+    margin: 0;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(232, 240, 254, 1) 100%
+    );
+  }
+
+  .App .search-container form {
+    padding: 5%;
+    justify-content: space-between;
+  }
+
+  .App .search-container form input {
+    width: 80%;
+    box-sizing: border-box;
+    background-color: rgba(225, 235, 254, 1);
+  }
+
+  .App .search-container form input:focus {
+    background-color: rgba(232, 240, 254, 1);
+  }
+
+  .App .search-container form button {
+    width: 15%;
+    margin: 0;
+    border-radius: 5px;
+  }
+
+  .App .items-container {
+    padding: 0 5%;
+  }
+
+  .App .items-container .user .toggle-btn {
+    background-color: white;
+    color: #2d9cdb;
+    max-height: 48px;
+  }
+}
+
+/*********************** LAPTOP ***********************/
+
+@media screen and (width > 768px) {
+  .App .results-container .items-container {
+    flex-wrap: nowrap;
+    position: relative;
+  }
+
+  .App .results-container .items-container .user .repo-container {
+    position: absolute;
+  }
+
+  .App .results-container .items-container .user.active .repo-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100vw;
+    left: 0;
+    top: 1rem;
+    margin: 5%;
+  }
+
+  .App
+    .results-container
+    .items-container
+    .user.active
+    .repo-container
+    .detail {
+    background-color: rgba(45, 156, 219, 0.2);
+    max-width: 25%;
+    padding: 1rem;
+    border-radius: 10px;
+    min-height: 112px;
+  }
+}
+
+/*********************** LAPTOP LARGE ***********************/
+
+@media screen and (width > 1024px) {
+  .App
+    .results-container
+    .items-container
+    .user.active
+    .repo-container
+    .detail {
+    max-width: 20%;
+  }
 }
